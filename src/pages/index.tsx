@@ -1,6 +1,4 @@
 import Head from 'next/head';
-import Layout from '@/components/Layout';
-import CalendarHome from './CalendarHome';
 
 export default function Home() {
   return (

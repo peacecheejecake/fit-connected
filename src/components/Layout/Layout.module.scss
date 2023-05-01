@@ -1,0 +1,8 @@
+@use '@/styles/constants/colors';
+
+main {
+  width: 100%;
+  min-height: 100vh;
+  background: colors.$blue;
+  border: 1px solid black;
+}

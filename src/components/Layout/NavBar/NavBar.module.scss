@@ -1,0 +1,21 @@
+@use '@/styles/constants/levels';
+@use '@/styles/constants/colors';
+
+.navBar {
+  height: 58px;
+  width: 100vw;
+  position: fixed;
+  padding: 0 18px;
+  z-index: levels.$navbar;
+  border: {
+    top: 1px solid colors.$viva-magenta;
+  }
+  color: colors.$viva-magenta;
+  bottom: 0;
+  box-shadow: 1px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  transition: 150ms;
+}

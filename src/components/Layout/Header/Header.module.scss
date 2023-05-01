@@ -1,0 +1,9 @@
+@use '@/styles/constants/colors';
+
+.header {
+  height: 84px;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  background-color: colors.$viva-magenta;
+}

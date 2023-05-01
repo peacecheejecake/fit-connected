@@ -1,8 +1,12 @@
 @use '@/styles/constants/colors';
 
-main {
+.main {
   width: 100%;
-  min-height: 100vh;
-  background: colors.$blue;
+  // min-height: 100vh;
+  position: relative;
+  top: 84px;
+  height: 200vh;
+  color: colors.$gray0;
+  background: linear-gradient(colors.$blue, colors.$red);
   border: 1px solid black;
 }

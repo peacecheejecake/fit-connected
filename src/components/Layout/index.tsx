@@ -12,10 +12,10 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <Header/>
-      <NavBar/>
-      <main>
+      <main className={styles.main}>
         {children}
       </main>
+      <NavBar/>
     </>
   )
 }

@@ -1,5 +1,9 @@
 @use '@/styles/constants/colors';
 
 .calendarWrap {
+  width: 100%;
+  margin: 20px 0;
+  padding: 0 10px;
   border: 1px solid colors.$viva-magenta;
+  border-radius: 4px;
 }

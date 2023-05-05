@@ -1,11 +1,20 @@
 @use '@/styles/constants/colors';
 @use '@/styles/constants/levels';
+@use '@/styles/constants/dimensions';
 
 .header {
-  height: 84px;
+  height: dimensions.$header-heihgt;
   width: 100vw;
   position: fixed;
   top: 0;
-  background-color: colors.$viva-magenta;
+  padding: 4px 12px;
+  // background-color: colors.$viva-magenta;
+  background-color: colors.$bg;
   z-index: levels.$nav;
+  display: flex;
+  align-items: flex-end;
+
+  .logo {
+    font-size: 42px;
+  }
 }

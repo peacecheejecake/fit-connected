@@ -8,7 +8,7 @@
   padding: 0 8px;
   background: none;
   transition: 150ms;
-  
+
   &.hover {
     background-color: colors.$gray-sand;
   }
@@ -16,23 +16,23 @@
   svg {
     width: 24px;
     height: 24px;
-    fill: colors.$viva-magenta;
-    opacity: 30%;
+    fill: rgba(colors.$gray6, 50%);
   }
 
   .title {
-    color: colors.$viva-magenta;
     font-size: 10px;
-    opacity: 30%;
+    color: rgba(colors.$gray6, 50%);
   }
 
   &.selected {
     svg {
       opacity: 100%;
+      fill: colors.$viva-magenta;
     }
 
     .title {
       opacity: 100%;
+      color: colors.$viva-magenta;
     }
   }
 }

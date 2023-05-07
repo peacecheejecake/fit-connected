@@ -5,5 +5,13 @@
   margin: 20px 0;
   padding: 0 10px;
   border: 1px solid colors.$viva-magenta;
+  color: colors.$gray9;
   border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+
+  button {
+    all: unset;
+    cursor: pointer;
+  }
 }

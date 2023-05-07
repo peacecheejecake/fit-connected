@@ -1,5 +1,5 @@
-import '@/styles/globals.scss';
-import { Inter, Roboto, Noto_Sans_KR } from 'next/font/google';
+import '@/styles/global.scss';
+import { Roboto, Noto_Sans_KR } from 'next/font/google';
 import type { AppProps } from 'next/app';
 import Layout from '@/components/Layout';
 

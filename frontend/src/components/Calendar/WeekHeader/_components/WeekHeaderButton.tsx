@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import styles from '../WeekHeader.module.scss';
 
-interface Weekday {
+export interface Weekday {
   title: string; // todo: typing
   isHoliday: boolean;
 }

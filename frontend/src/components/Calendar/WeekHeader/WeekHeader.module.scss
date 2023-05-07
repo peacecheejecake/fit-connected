@@ -4,18 +4,27 @@
   width: 100%;
   height: 18px;
   font-size: 14px;
-  font-weight: 300;
   display: flex;
-  
-  .week {
-    color: colors.$gray9;
+  align-items: center;
+  justify-content: space-around;
 
-    &.part-holiday {
-      color: colors.$blue;
+  button.week {
+    width: 100%;
+    color: colors.$gray9;
+    font-weight: 300;
+    text-align: center;
+    transition: font-weight 100ms;
+
+    &:hover {
+      font-weight: 700;
     }
 
     &.holiday {
       color: colors.$red;
+    }
+
+    &.semi-holiday {
+      color: colors.$blue;
     }
   }
 }

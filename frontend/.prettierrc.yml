@@ -3,7 +3,7 @@ semi: true
 trailingComma: "es5"
 singleQuote: true
 jsxSingleQuote: true
-printWidth: 80
+printWidth: 88
 proseWrap: never
 htmlWhitespaceSensitivity: "css"
 endOfLine: "lf"

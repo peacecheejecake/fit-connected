@@ -1,4 +1,4 @@
-import { useMemo, useState, useReducer } from 'react';
+import { useMemo, useState, useReducer, useEffect } from 'react';
 import cx from 'classnames';
 import type { Dayjs } from 'dayjs';
 import { useDayjs, useWeekStartDayjs, useAnimationListners } from '@/hooks';
@@ -52,14 +52,14 @@ export default function WeekView({}: WeekViewDatesProps) {
 
     setDirection('next');
     setLastLastWeekDates(createDates(startDate.subtract(14, 'day')));
-    
+
     const newStartDate = startDate.add(7, 'day');
-    setSelectedDate(newStartDate.add(selectedDate.day(), 'day'));
+    setSelectedDate((prev) => prev.add(7, 'day'));
 
     setTimeout(() => {
       setDirection(null);
       setLastLastWeekDates(null);
-      setStartDate(newStartDate);
+      setStartDate((prev) => prev.add(7, 'day'));
     }, 1000);
   };
 

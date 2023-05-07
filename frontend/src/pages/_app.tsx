@@ -1,6 +1,7 @@
 import '@/styles/global.scss';
 import { Roboto, Noto_Sans_KR } from 'next/font/google';
 import type { AppProps } from 'next/app';
+import { RecoilRoot } from 'recoil';
 import Layout from '@/components/Layout';
 
 const notoSansKr = Noto_Sans_KR({
@@ -19,15 +20,16 @@ export default function App({ Component, pageProps }: AppProps) {
       <style jsx global>
         {`
           html {
-            font-family: ${notoSansKr.style.fontFamily}
-              ${roboto.style.fontFamily};
+            font-family: ${notoSansKr.style.fontFamily} ${roboto.style.fontFamily};
           }
         `}
       </style>
-      <Layout>
-        {/* <CalendarHome/> */}
-        <Component {...pageProps} />
-      </Layout>
+      <RecoilRoot>
+        <Layout>
+          {/* <CalendarHome/> */}
+          <Component {...pageProps} />
+        </Layout>
+      </RecoilRoot>
     </>
   );
 }

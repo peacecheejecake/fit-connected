@@ -14,4 +14,13 @@
     all: unset;
     cursor: pointer;
   }
+
+  .messageBox {
+    width: 100%;
+    color: colors.$gray5;
+    font-size: 13px;
+    text-align: center;
+    margin: 0 auto;
+    line-break: anywhere;
+  }
 }

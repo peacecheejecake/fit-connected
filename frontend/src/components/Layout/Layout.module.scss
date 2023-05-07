@@ -13,3 +13,28 @@
   background: colors.$bg;
   z-index: levels.$ground;
 }
+
+.testMessages {
+  position: absolute;
+  width: 100vw;
+  bottom: 70px;
+  padding: 0 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: levels.$logs;
+
+  .message {
+    width: 100%;
+    min-height: 28px;
+    font-size: 13px;
+    border-radius: 4px;
+    color: colors.$gray0;
+    background-color: rgba(colors.$gray9, 65%);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

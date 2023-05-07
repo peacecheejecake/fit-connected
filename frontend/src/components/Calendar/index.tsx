@@ -1,5 +1,5 @@
+import { useState, useEffect, useRef } from 'react';
 import cx from 'classnames';
-import { useState } from 'react';
 import dayjs from 'dayjs';
 import type { Dayjs } from 'dayjs';
 import { useDayjs } from '@/hooks';
@@ -18,7 +18,7 @@ export default function Calendar({}: CalendarProps) {
     <div className={styles.calendarWrap}>
       <WeekHeader />
       {/* <WeekViewDates startDate={startDate} /> */}
-      <WeekViewDates/>
+      <WeekViewDates />
     </div>
   );
 }

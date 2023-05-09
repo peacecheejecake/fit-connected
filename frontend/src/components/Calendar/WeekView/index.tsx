@@ -12,7 +12,10 @@ interface WeekViewDatesProps {
 }
 
 export default function WeekView({}: WeekViewDatesProps) {
+  const [direction, setDirection] = useState<null | 'prev' | 'next'>(null);
+
   const [startDate, setStartDate] = useWeekStartDayjs();
+  const [selectedDate, setSelectedDate] = useDayjs(startDate);
 
   const lastWeekDates = useMemo(
     () => createDates(startDate.subtract(7, 'day')),
@@ -23,10 +26,6 @@ export default function WeekView({}: WeekViewDatesProps) {
     () => createDates(startDate.add(7, 'day')),
     [startDate]
   );
-
-  const [selectedDate, setSelectedDate] = useDayjs(startDate);
-
-  const [direction, setDirection] = useState<null | 'prev' | 'next'>(null);
 
   const handleClickPrev = () => {
     if (direction) return;

@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import cx from 'classnames';
+import type { Dayjs } from 'dayjs';
 import { useDayjs, useWeekStartDayjs } from '@/hooks';
 import { createDates } from './_worker';
 import { WeekViewDates } from './_components';
@@ -25,28 +26,35 @@ export default function WeekView({}: WeekViewDatesProps) {
     [startDate]
   );
 
+  const [lastLastWeekDates, setLastLastWeekDates] = useState<null | Dayjs[]>(null);
+  const [nextNextWeekDates, setNextNextWeekDates] = useState<null | Dayjs[]>(null);
+
   const handleClickPrev = () => {
     if (direction) return;
 
     setDirection('prev');
-    setStartDate((prev) => prev.subtract(7, 'day'));
+    setNextNextWeekDates(createDates(startDate.add(14, 'day')));
     setSelectedDate((prev) => prev.subtract(7, 'day'));
-
+    
     setTimeout(() => {
+      setStartDate((prev) => prev.subtract(7, 'day'));
       setDirection(null);
-    }, 1000);
+      setNextNextWeekDates(null);
+    }, 300);
   };
 
   const handleClickNext = () => {
     if (direction) return;
 
     setDirection('next');
-    setStartDate((prev) => prev.add(7, 'day'));
+    setLastLastWeekDates(createDates(startDate.subtract(14, 'day')));
     setSelectedDate((prev) => prev.add(7, 'day'));
-
+    
     setTimeout(() => {
+      setStartDate((prev) => prev.add(7, 'day'));
       setDirection(null);
-    }, 1000);
+      setLastLastWeekDates(null);
+    }, 300);
   };
 
   return (
@@ -65,12 +73,16 @@ export default function WeekView({}: WeekViewDatesProps) {
         prev
       </button>
 
+      {lastLastWeekDates && <WeekViewDates dates={lastLastWeekDates} />}
+
       <WeekViewDates dates={lastWeekDates} />
       <WeekViewDates
         dates={thisWeekDates}
         selectedDateState={[selectedDate, setSelectedDate]}
       />
       <WeekViewDates dates={nextWeekDates} />
+
+      {nextNextWeekDates && <WeekViewDates dates={nextNextWeekDates} />}
 
       <button
         className={cx(styles.pagination, styles.next)}

@@ -77,12 +77,14 @@
   }
 
   &.paging {
+    width: 400%;
+
     &.next {
-      animation: page-next 1000ms ease-in-out;
+      animation: page-next 300ms ease-in-out;
     }
 
     &.prev {
-      animation: page-prev 1000ms ease-in-out;
+      animation: page-prev 300ms ease-in-out;
     }
 
     button.pagination {
@@ -97,20 +99,20 @@
 
 @keyframes page-next {
   from {
-    transform: translateX(0);
+    transform: translateX(-50%);
   }
 
   to {
-    transform: translateX(clac(-100% / 2));
+    transform: translateX(-75%);
   }
 }
 
 @keyframes page-prev {
   from {
-    transform: translateX(calc(-200% / 3));
+    transform: translateX(-25%);
   }
 
   to {
-    transform: translateX(calc(-100% / 3));
+    transform: translateX(0);
   }
 }

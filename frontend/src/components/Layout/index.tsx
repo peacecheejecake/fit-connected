@@ -8,7 +8,7 @@ import styles from './Layout.module.scss';
 type LayoutProps = PropsWithChildren<{}>;
 
 export default function Layout({ children }: LayoutProps) {
-  const [testMessages] = useMessageBox<HTMLDivElement>();
+  const [testMessages] = useMessageBox();
 
   return (
     <>

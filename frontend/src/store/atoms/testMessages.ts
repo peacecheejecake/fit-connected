@@ -1,7 +1,7 @@
 import { atom } from 'recoil';
 
 const testMessagesAtom = atom<string[]>({
-  key: '#testMessages',
+  key: 'testMessagesAtom',
   default: [],
 });
 

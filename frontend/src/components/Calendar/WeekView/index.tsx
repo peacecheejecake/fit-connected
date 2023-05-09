@@ -37,13 +37,12 @@ export default function WeekView({}: WeekViewDatesProps) {
     setDirection('prev');
     setNextNextWeekDates(createDates(startDate.add(14, 'day')));
 
-    const newStartDate = startDate.subtract(7, 'day');
-    setSelectedDate(newStartDate.add(selectedDate.day(), 'day'));
+    setSelectedDate((prev) => prev.subtract(7, 'day'));
 
     setTimeout(() => {
       setDirection(null);
       setNextNextWeekDates(null);
-      setStartDate(newStartDate);
+      setStartDate((prev) => prev.subtract(7, 'day'));
     }, 1000);
   };
 
@@ -53,7 +52,6 @@ export default function WeekView({}: WeekViewDatesProps) {
     setDirection('next');
     setLastLastWeekDates(createDates(startDate.subtract(14, 'day')));
 
-    const newStartDate = startDate.add(7, 'day');
     setSelectedDate((prev) => prev.add(7, 'day'));
 
     setTimeout(() => {
@@ -79,14 +77,14 @@ export default function WeekView({}: WeekViewDatesProps) {
         prev
       </button>
 
-      {lastLastWeekDates && <WeekViewDates dates={lastLastWeekDates} />}
+      {/* {lastLastWeekDates && <WeekViewDates dates={lastLastWeekDates} />} */}
       <WeekViewDates dates={lastWeekDates} />
       <WeekViewDates
         dates={thisWeekDates}
         selectedDateState={[selectedDate, setSelectedDate]}
       />
       <WeekViewDates dates={nextWeekDates} />
-      {nextNextWeekDates && <WeekViewDates dates={nextNextWeekDates} />}
+      {/* {nextNextWeekDates && <WeekViewDates dates={nextNextWeekDates} />} */}
 
       <button
         className={cx(styles.pagination, styles.next)}

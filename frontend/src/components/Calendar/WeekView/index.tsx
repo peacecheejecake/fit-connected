@@ -24,9 +24,6 @@ export default function WeekView({}: WeekViewDatesProps) {
     [startDate]
   );
 
-  const [lastLastWeekDates, setLastLastWeekDates] = useState<null | Dayjs[]>(null);
-  const [nextNextWeekDates, setNextNextWeekDates] = useState<null | Dayjs[]>(null);
-
   const [selectedDate, setSelectedDate] = useDayjs(startDate);
 
   const [direction, setDirection] = useState<null | 'prev' | 'next'>(null);
@@ -35,14 +32,11 @@ export default function WeekView({}: WeekViewDatesProps) {
     if (direction) return;
 
     setDirection('prev');
-    setNextNextWeekDates(createDates(startDate.add(14, 'day')));
-
+    setStartDate((prev) => prev.subtract(7, 'day'));
     setSelectedDate((prev) => prev.subtract(7, 'day'));
 
     setTimeout(() => {
       setDirection(null);
-      setNextNextWeekDates(null);
-      setStartDate((prev) => prev.subtract(7, 'day'));
     }, 1000);
   };
 
@@ -50,14 +44,11 @@ export default function WeekView({}: WeekViewDatesProps) {
     if (direction) return;
 
     setDirection('next');
-    setLastLastWeekDates(createDates(startDate.subtract(14, 'day')));
-
+    setStartDate((prev) => prev.add(7, 'day'));
     setSelectedDate((prev) => prev.add(7, 'day'));
 
     setTimeout(() => {
       setDirection(null);
-      setLastLastWeekDates(null);
-      setStartDate((prev) => prev.add(7, 'day'));
     }, 1000);
   };
 
@@ -77,14 +68,12 @@ export default function WeekView({}: WeekViewDatesProps) {
         prev
       </button>
 
-      {/* {lastLastWeekDates && <WeekViewDates dates={lastLastWeekDates} />} */}
       <WeekViewDates dates={lastWeekDates} />
       <WeekViewDates
         dates={thisWeekDates}
         selectedDateState={[selectedDate, setSelectedDate]}
       />
       <WeekViewDates dates={nextWeekDates} />
-      {/* {nextNextWeekDates && <WeekViewDates dates={nextNextWeekDates} />} */}
 
       <button
         className={cx(styles.pagination, styles.next)}

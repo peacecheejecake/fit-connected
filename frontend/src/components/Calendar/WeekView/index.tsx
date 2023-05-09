@@ -1,9 +1,7 @@
-import { useMemo, useState, useReducer, useEffect } from 'react';
+import { useMemo, useState } from 'react';
 import cx from 'classnames';
-import type { Dayjs } from 'dayjs';
-import { useDayjs, useWeekStartDayjs, useAnimationListners } from '@/hooks';
-import { useWeekDates } from './_hooks';
-import { createDates, getWeekStartDateIncluded } from './_worker';
+import { useDayjs, useWeekStartDayjs } from '@/hooks';
+import { createDates } from './_worker';
 import { WeekViewDates } from './_components';
 import styles from './WeekView.module.scss';
 

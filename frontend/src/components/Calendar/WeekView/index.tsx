@@ -1,7 +1,8 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect, useCallback } from 'react';
 import cx from 'classnames';
 import type { Dayjs } from 'dayjs';
-import { useDayjs, useWeekStartDayjs } from '@/hooks';
+import { useDayjs, useWeekStartDayjs, useSwiper } from '@/hooks';
+import type { Direction } from '@/hooks';
 import { createDates } from './_worker';
 import { WeekViewDates } from './_components';
 import styles from './WeekView.module.scss';
@@ -11,8 +12,6 @@ interface WeekViewDatesProps {
 }
 
 export default function WeekView({}: WeekViewDatesProps) {
-  const [direction, setDirection] = useState<null | 'prev' | 'next'>(null);
-
   const [startDate, setStartDate] = useWeekStartDayjs();
   const [selectedDate, setSelectedDate] = useDayjs(startDate);
 
@@ -26,36 +25,17 @@ export default function WeekView({}: WeekViewDatesProps) {
     [startDate]
   );
 
-  const [lastLastWeekDates, setLastLastWeekDates] = useState<null | Dayjs[]>(null);
-  const [nextNextWeekDates, setNextNextWeekDates] = useState<null | Dayjs[]>(null);
+  const go = (direction: Direction) => {
+    if (!direction) return;
 
-  const handleClickPrev = () => {
-    if (direction) return;
+    const sign = direction === 'prev' ? -1 : 1;
+    const changeOneWeek = (prev: Dayjs) => prev.add(sign * 7, 'day');
 
-    setDirection('prev');
-    setNextNextWeekDates(createDates(startDate.add(14, 'day')));
-    setSelectedDate((prev) => prev.subtract(7, 'day'));
-    
-    setTimeout(() => {
-      setStartDate((prev) => prev.subtract(7, 'day'));
-      setDirection(null);
-      setNextNextWeekDates(null);
-    }, 300);
+    setStartDate(changeOneWeek);
+    setSelectedDate(changeOneWeek);
   };
 
-  const handleClickNext = () => {
-    if (direction) return;
-
-    setDirection('next');
-    setLastLastWeekDates(createDates(startDate.subtract(14, 'day')));
-    setSelectedDate((prev) => prev.add(7, 'day'));
-    
-    setTimeout(() => {
-      setStartDate((prev) => prev.add(7, 'day'));
-      setDirection(null);
-      setLastLastWeekDates(null);
-    }, 300);
-  };
+  const { swiperTarget, direction } = useSwiper<HTMLDivElement>({ handler: go });
 
   return (
     <div
@@ -64,16 +44,17 @@ export default function WeekView({}: WeekViewDatesProps) {
         [styles.next]: direction === 'next',
         [styles.prev]: direction === 'prev',
       })}
+      ref={swiperTarget}
     >
-      <button
+      {/* <button
         className={cx(styles.pagination, styles.prev)}
-        onClick={handleClickPrev}
+        onClick={goPrev}
         type='button'
       >
         prev
-      </button>
+      </button> */}
 
-      {lastLastWeekDates && <WeekViewDates dates={lastLastWeekDates} />}
+      {/* {lastLastWeekDates && <WeekViewDates dates={lastLastWeekDates} />} */}
 
       <WeekViewDates dates={lastWeekDates} />
       <WeekViewDates
@@ -82,15 +63,15 @@ export default function WeekView({}: WeekViewDatesProps) {
       />
       <WeekViewDates dates={nextWeekDates} />
 
-      {nextNextWeekDates && <WeekViewDates dates={nextNextWeekDates} />}
+      {/* {nextNextWeekDates && <WeekViewDates dates={nextNextWeekDates} />} */}
 
-      <button
+      {/* <button
         className={cx(styles.pagination, styles.next)}
-        onClick={handleClickNext}
+        onClick={goNext}
         type='button'
       >
         next
-      </button>
+      </button> */}
     </div>
   );
 }

@@ -1,10 +1,12 @@
 @use '@/styles/constants/colors';
 
+$neg-one-third: calc(-100% / 3);
+
 .weekWrapper {
   width: 300%;
   position: relative;
   display: flex;
-  transform: translateX(calc(-100% / 3));
+  transform: translateX($neg-one-third);
 
   .week {
     width: 100%;
@@ -77,14 +79,14 @@
   }
 
   &.paging {
-    width: 400%;
+    transition: transform 300ms;
 
     &.next {
-      animation: page-next 300ms ease-in-out;
+      transform: translateX(calc($neg-one-third * 2));
     }
 
     &.prev {
-      animation: page-prev 300ms ease-in-out;
+      transform: translateX(0);
     }
 
     button.pagination {
@@ -99,11 +101,11 @@
 
 @keyframes page-next {
   from {
-    transform: translateX(-50%);
+    transform: translateX(calc($neg-one-third * 2));
   }
 
   to {
-    transform: translateX(-75%);
+    transform: translateX($neg-one-third);
   }
 }
 
@@ -113,6 +115,6 @@
   }
 
   to {
-    transform: translateX(0);
+    transform: translateX($neg-one-third);
   }
 }

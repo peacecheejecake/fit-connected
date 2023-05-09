@@ -5,7 +5,7 @@ import { testMessagesAtom } from '@/store';
 
 const useMessageBox = (): [
   string[],
-  SetterOrUpdater<string[]>
+  (message: any) => void
 ] => {
   const [testMessages, setTestMessages] = useRecoilState(testMessagesAtom);
 

@@ -51,8 +51,8 @@ const useSwiper = <T extends HTMLElement>({
     ref.current.addEventListener('touchend', handleTouchEnd, false);
 
     return () => {
-      ref.current?.removeEventListener('touchstart', handleTouchStart);
       ref.current?.removeEventListener('touchend', handleTouchEnd);
+      ref.current?.removeEventListener('touchstart', handleTouchStart);
     };
   }, []);
 

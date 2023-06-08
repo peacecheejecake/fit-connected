@@ -1,18 +1,20 @@
 import { useMemo, useState, useEffect, useCallback } from 'react';
 import cx from 'classnames';
+import type { Dispatch, SetStateAction } from 'react';
 import type { Dayjs } from 'dayjs';
-import { useDayjs, useWeekStartDayjs, useSwiper } from '@/hooks';
+import { createDates } from '@/worker';
+import { useDayjs, useSwiper } from '@/hooks';
 import type { Direction } from '@/hooks';
-import { createDates } from './_worker';
 import { WeekViewDates } from './_components';
 import styles from './WeekView.module.scss';
 
 interface WeekViewDatesProps {
-  // startDate: Dayjs;
+  startDate: Dayjs;
+  setStartDate: Dispatch<SetStateAction<Dayjs>>;
 }
 
-export default function WeekView({}: WeekViewDatesProps) {
-  const [startDate, setStartDate] = useWeekStartDayjs();
+export default function WeekView({ startDate, setStartDate }: WeekViewDatesProps) {
+  // const [startDate, setStartDate] = useWeekStartDayjs();
   const [selectedDate, setSelectedDate] = useDayjs(startDate);
 
   const lastWeekDates = useMemo(

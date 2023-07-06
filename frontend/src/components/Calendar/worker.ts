@@ -1,7 +1,7 @@
 // import dayjs from 'dayjs';
 // import type { Dayjs } from 'dayjs';
 
-// const createDates = (startDate: Dayjs) => {
+// const createDatesForWeek = (startDate: Dayjs) => {
 //   const dates = [];
 //   let date = startDate;
 //   for (let offset = 0; offset < 7; offset += 1) {
@@ -16,4 +16,4 @@
 //   return today.subtract(today.day(), 'day');
 // }
 
-// export { createDates, startDateOfWeek };
+// export { createDatesForWeek, startDateOfWeek };

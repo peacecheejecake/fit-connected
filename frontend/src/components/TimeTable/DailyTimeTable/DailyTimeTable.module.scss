@@ -1,0 +1,31 @@
+@use '@/styles/constants/colors';
+
+.dailyTable {
+  width: 100%;
+  height: 720px;
+  
+  .timeBlock {
+    width: 100%;
+    height: 42px;
+    border: 1px solid colors.$gray3;
+    transition: 100ms;
+  }
+
+  .schedule {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    .typeIcon {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .name {
+      font-size: 10px;
+    }
+  }
+}
